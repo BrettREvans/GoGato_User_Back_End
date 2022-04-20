@@ -39,4 +39,23 @@ public class UserController {
         }
     }
 
+    /**
+     * Update a User's profile information.
+     * @param user New user information
+     */
+    @PutMapping("/profile/{identifier}")
+    public void updateProfile(@PathVariable String identifier, @RequestBody String profileText) {
+
+        // Get the user to update by their ID or username
+        try {
+            Integer id = Integer.parseInt(identifier);
+            User userToUpdate =  userService.findUserById(id);
+        } catch (NumberFormatException e) {
+            User userToUpdate = userService.findUserByUsername(identifier);
+        }
+
+        userService.updateProfile(userToUpdate, profileText);
+
+    }
+
 }
