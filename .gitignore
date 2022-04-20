@@ -1,9 +1,13 @@
 # Default ignored files
 /shelf/
-/workspace.xml
+/.idea/workspace.xml
+*/workspace.xml
+
 
 # Long list
 HELP.md
+/.gradle/
+*.gradle
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
@@ -20,6 +24,7 @@ build/
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
+*.lock
 
 ### IntelliJ IDEA ###
 .idea
