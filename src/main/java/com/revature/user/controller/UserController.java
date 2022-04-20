@@ -14,20 +14,27 @@ public class UserController {
         this.userService = userService;
     }
 
+    /**
+     * Create User via provided User information
+     * @param user User to create
+     * @return
+     */
     @PostMapping
     public User createNewUser(@RequestBody User user) {
         return userService.createNewUser(user);
     }
 
-    // /users/mickey
+    /**
+     * Get user by ID or Username. If ID cannot be parsed as an integer, assume string and find by username.
+     * @param identifier
+     * @return
+     */
     @GetMapping("/{identifier}")
     public User findUserByIdOrUsername(@PathVariable String identifier) {
         try {
             Integer id = Integer.parseInt(identifier);
-
             return userService.findUserById(id);
         } catch (NumberFormatException e) {
-            // we know that the identifier string is not a number, so we can use it as a username
             return userService.findUserByUsername(identifier);
         }
     }
