@@ -39,9 +39,28 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    /**
+     * Finds the username in the database
+     * @param username
+     * @return
+     */
+    public User findByUsername(String username)
+    {
+        return userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("findByUsername: No User found!"));
+    }
 
+    /**
+     * Compares submitted password with database password
+     * @param user
+     * @param dbUser
+     * @return
+     */
+    public boolean comparePassword(User user, User dbUser)
+    {
+        //String encPass = encryptPassword(user.getPassword());
 
-    public User findUserByUsername(String username) {
-        return userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found."));
+        //user.setPassword(encPass);      // Encrypt password for comparison
+
+        return user.getPassword().equals(dbUser.getPassword()); // returns a confirmed.
     }
 }
