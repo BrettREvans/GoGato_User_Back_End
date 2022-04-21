@@ -24,7 +24,8 @@ public class UserService {
     }
 
     /**
-     *
+     * Creates a new user
+     * @Author Tyler, Boualem, Jason
      * @param user
      * @return a completed registration form
      */
@@ -41,6 +42,7 @@ public class UserService {
 
     /**
      * Finds the username in the database
+     * @Author Tyler, Boualem, Jason
      * @param username
      * @return
      */
@@ -51,6 +53,7 @@ public class UserService {
 
     /**
      * Compares submitted password with database password
+     * @Author Tyler, Boualem, Jason
      * @param user
      * @param dbUser
      * @return

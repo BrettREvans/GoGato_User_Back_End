@@ -12,6 +12,7 @@ public class LoginController {
     private final UserService userService;
 
     /**
+     * @Author Tyler, Boualem, Jason
      * Constructor -> Injects needed dependencies
      * @param userService UserService dependency
      */
@@ -20,6 +21,7 @@ public class LoginController {
     }
 
     /**
+     * @Author Tyler, Boualem, Jason
      * Method -> Checks a User that is logging in
      * @param user The info to be checked
      * @return The User after validation
