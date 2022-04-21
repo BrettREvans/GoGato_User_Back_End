@@ -22,11 +22,11 @@ public class User {
 
     private String username;
     private String password;
+    private int followerCount;
+    private int points;
     private String firstName;
     private String lastName;
     private String email;
     private String aboutMe;
-
-
 }
 
