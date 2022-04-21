@@ -23,5 +23,8 @@ public class User {
 
     private String username;
     private String password;
+    private String profile;
+    private int followerCount;
+    private int points;
 }
 
