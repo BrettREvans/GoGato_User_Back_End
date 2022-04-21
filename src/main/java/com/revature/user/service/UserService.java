@@ -25,8 +25,8 @@ public class UserService {
         return userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("User not found."));
     }
 
-    public void updateProfile(User user, String profileText){
+    public User updateProfile(User user, String profileText) {
         user.setProfile(profileText);
-
+        return userRepository.save(user);
     }
 }
