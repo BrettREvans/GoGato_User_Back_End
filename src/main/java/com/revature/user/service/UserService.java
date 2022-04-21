@@ -63,4 +63,9 @@ public class UserService {
 
         return user.getPassword().equals(dbUser.getPassword()); // returns a confirmed.
     }
+
+    public User updateAboutMe(User user, String aboutMeText) {
+        user.setAboutMe(aboutMeText);
+        return userRepository.save(user);
+    }
 }
