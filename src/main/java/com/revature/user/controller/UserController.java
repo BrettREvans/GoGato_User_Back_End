@@ -15,12 +15,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    /**
-     * Create User via provided User information
-     *
-     * @param user User to create
-     * @return
-     */
     @PostMapping
     public User createNewUser(@RequestBody User user) {
         return userService.createNewUser(user);
@@ -45,12 +39,12 @@ public class UserController {
     /**
      * Update a User's profile information.
      *
-     * @param profileTextObject New user information
+     * @param aboutMeObject New user information
      */
     @PutMapping("/profile/{identifier}")
-    public void updateProfile(@PathVariable String identifier, @RequestBody ObjectNode profileTextObject) {
+    public void updateAboutMe(@PathVariable String identifier, @RequestBody ObjectNode aboutMeObject) {
 
-        String newProfileText = profileTextObject.get("profile").asText();
+        String aboutMeText = aboutMeObject.get("aboutMe").asText();
 
         User userToUpdate = new User();
         // Get the user to update by their ID or username
@@ -61,6 +55,6 @@ public class UserController {
             userToUpdate = userService.findUserByUsername(identifier);
         }
 
-        userService.updateProfile(userToUpdate, newProfileText);
+        userService.updateAboutMe(userToUpdate, aboutMeText);
     }
 }
