@@ -19,6 +19,7 @@ public class UserController {
 
     /**
      * Creates the user through an HTTP request
+     * @Author Tyler, Boualem, Jason
      * @param user
      * @return a user profile
      */
@@ -28,6 +29,7 @@ public class UserController {
     }
     /**
      * Retrieves a list of all users
+     * @Author Tyler, Boualem, Jason
      * @return a list of users
      */
     @GetMapping
@@ -51,7 +53,10 @@ public class UserController {
             Integer id = Integer.parseInt(identifier);
             return userService.findUserById(id);
         } catch (NumberFormatException e) {
-            return userService.findUserByUsername(identifier);
+
+            // we know that the identifier string is not a number, so we can use it as a username
+            return userService.findByUsername(identifier);
+
         }
     }
 
