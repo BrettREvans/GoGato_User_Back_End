@@ -29,7 +29,7 @@ public class UserServiceTests {
 
     @Test
     @DisplayName("Test to update profile text")
-    public void updateProfileTest(){
+    public void updateAboutMeTest(){
 
         User userTest = new User();
 
