@@ -1,5 +1,7 @@
 package com.revature.user.controller;
 
+import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.node.TextNode;
 import com.revature.user.model.User;
 import com.revature.user.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +18,7 @@ public class UserController {
 
     /**
      * Create User via provided User information
+     *
      * @param user User to create
      * @return
      */
@@ -26,6 +29,7 @@ public class UserController {
 
     /**
      * Get user by ID or Username. If ID cannot be parsed as an integer, assume string and find by username.
+     *
      * @param identifier
      * @return
      */
@@ -41,22 +45,24 @@ public class UserController {
 
     /**
      * Update a User's profile information.
-     * @param profileText New user information
+     *
+     * @param profileTextObject New user information
      */
     @PutMapping("/profile/{identifier}")
-    public void updateProfile(@PathVariable String identifier, @RequestBody String profileText) {
+    public void updateProfile(@PathVariable String identifier, @RequestBody ObjectNode profileTextObject) {
 
+        String newProfileText = profileTextObject.get("profile").asText();
 
         User userToUpdate = new User();
         // Get the user to update by their ID or username
         try {
             Integer id = Integer.parseInt(identifier);
-            userToUpdate =  userService.findUserById(id);
+            userToUpdate = userService.findUserById(id);
         } catch (NumberFormatException e) {
             userToUpdate = userService.findUserByUsername(identifier);
         }
 
-        userService.updateProfile(userToUpdate, profileText);
+        userService.updateProfile(userToUpdate, newProfileText);
 
     }
 
