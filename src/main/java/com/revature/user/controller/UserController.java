@@ -2,21 +2,35 @@ package com.revature.user.controller;
 
 import com.revature.user.model.User;
 import com.revature.user.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 
-    private final UserService userService;
+    @Autowired
+    UserService userService;
+
+    /**
+     * Creates the user through an HTTP request
+     * @param user
+     * @return
+     */
+    @PostMapping
+    public User createNewUser(@RequestBody User user) {
+        return userService.createNewUser(user); // returns user profile
+    }
+
+    @GetMapping
+    public List<User> getAllUsers(){
+        return userService.getAllUsers();
+    }
 
     public UserController(UserService userService) {
         this.userService = userService;
-    }
-
-    @PostMapping
-    public User createNewUser(@RequestBody User user) {
-        return userService.createNewUser(user);
     }
 
     // /users/mickey
