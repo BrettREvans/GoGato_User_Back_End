@@ -1,7 +1,6 @@
 package com.revature.user.controller;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.databind.node.TextNode;
 import com.revature.user.model.User;
 import com.revature.user.service.UserService;
 import org.springframework.web.bind.annotation.*;
@@ -63,7 +62,5 @@ public class UserController {
         }
 
         userService.updateProfile(userToUpdate, newProfileText);
-
     }
-
 }
