@@ -1,6 +1,7 @@
 package com.revature.user.controller;
 
 import com.revature.user.model.User;
+import com.revature.user.repository.UserRepository;
 import com.revature.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +14,7 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    UserRepository userRepository;
 
     /**
      * Creates the user through an HTTP request
@@ -23,7 +25,6 @@ public class UserController {
     public User createNewUser(@RequestBody User user) {
         return userService.createNewUser(user); // returns user profile
     }
-
     /**
      * Retrieves a list of all users
      * @return a list of users
@@ -37,7 +38,6 @@ public class UserController {
         this.userService = userService;
     }
 
-    // /users/mickey
     @GetMapping("/{identifier}")
     public User findUserByIdOrUsername(@PathVariable String identifier) {
         try {
@@ -49,5 +49,7 @@ public class UserController {
             return userService.findUserByUsername(identifier);
         }
     }
+
+
 
 }
