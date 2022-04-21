@@ -17,16 +17,20 @@ public class UserController {
     /**
      * Creates the user through an HTTP request
      * @param user
-     * @return
+     * @return a user profile
      */
     @PostMapping
     public User createNewUser(@RequestBody User user) {
         return userService.createNewUser(user); // returns user profile
     }
 
+    /**
+     * Retrieves a list of all users
+     * @return a list of users
+     */
     @GetMapping
     public List<User> getAllUsers(){
-        return userService.getAllUsers();
+        return userService.getAllUsers(); // returns a list of users
     }
 
     public UserController(UserService userService) {

@@ -14,6 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class User {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
