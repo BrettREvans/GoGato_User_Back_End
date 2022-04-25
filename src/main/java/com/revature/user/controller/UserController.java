@@ -76,7 +76,7 @@ public class UserController {
             Integer id = Integer.parseInt(identifier);
             userToUpdate = userService.findUserById(id);
         } catch (NumberFormatException e) {
-            userToUpdate = userService.findUserByUsername(identifier);
+            userToUpdate = userService.findByUsername(identifier);
         }
 
         userService.updateAboutMe(userToUpdate, aboutMeText);
