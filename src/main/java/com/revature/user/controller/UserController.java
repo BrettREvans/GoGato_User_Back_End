@@ -43,7 +43,7 @@ public class UserController {
 
     /**
      * Get user by ID or Username. If ID cannot be parsed as an integer, assume string and find by username.
-     *
+     *@author Tyler, Boualem, Jason, Marcus
      * @param identifier
      * @return
      */
