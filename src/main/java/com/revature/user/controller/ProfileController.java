@@ -2,6 +2,7 @@ package com.revature.user.controller;
 
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.revature.user.model.User;
+import com.revature.user.service.ProfileService;
 import com.revature.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,14 +12,18 @@ import org.springframework.web.bind.annotation.*;
 public class ProfileController {
 
     @Autowired
+    ProfileService profileService;
+
+    @Autowired
     UserService userService;
 
     /**
      * Update a User's profile information.
      *
      * @param aboutMeObject New user information
+     * @author Asheton, Jazib
      */
-    @PutMapping("/profile/{identifier}")
+    @PutMapping("/{identifier}")
     public void updateAboutMe(@PathVariable String identifier, @RequestBody ObjectNode aboutMeObject) {
 
         String aboutMeText = aboutMeObject.get("aboutMe").asText();
@@ -32,6 +37,6 @@ public class ProfileController {
             userToUpdate = userService.findByUsername(identifier);
         }
 
-        userService.updateAboutMe(userToUpdate, aboutMeText);
+        profileService.updateAboutMe(userToUpdate, aboutMeText);
     }
 }
