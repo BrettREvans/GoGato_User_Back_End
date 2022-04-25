@@ -13,7 +13,7 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public List<User> getAllUsers(){
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
@@ -25,12 +25,12 @@ public class UserService {
 
     /**
      * Creates a new user
-     * @Author Tyler, Boualem, Jason
+     *
      * @param user
      * @return a completed registration form
+     * @author Tyler, Boualem, Jason
      */
-    public User createNewUser(User user)
-    {
+    public User createNewUser(User user) {
         user.setPassword((user.getPassword()));
         System.out.println(user.getPassword());
         return userRepository.save(user);  // returns a user profile
@@ -42,33 +42,28 @@ public class UserService {
 
     /**
      * Finds the username in the database
-     * @Author Tyler, Boualem, Jason
+     *
      * @param username
      * @return
+     * @author Tyler, Boualem, Jason
      */
-    public User findByUsername(String username)
-    {
+    public User findByUsername(String username) {
         return userRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("findByUsername: No User found!"));
     }
 
     /**
      * Compares submitted password with database password
-     * @Author Tyler, Boualem, Jason
+     *
      * @param user
      * @param dbUser
      * @return
+     * @author Tyler, Boualem, Jason
      */
-    public boolean comparePassword(User user, User dbUser)
-    {
+    public boolean comparePassword(User user, User dbUser) {
         //String encPass = encryptPassword(user.getPassword());
 
         //user.setPassword(encPass);      // Encrypt password for comparison
 
         return user.getPassword().equals(dbUser.getPassword()); // returns a confirmed.
-    }
-
-    public User updateAboutMe(User user, String aboutMeText) {
-        user.setAboutMe(aboutMeText);
-        return userRepository.save(user);
     }
 }

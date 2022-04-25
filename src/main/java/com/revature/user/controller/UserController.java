@@ -59,26 +59,4 @@ public class UserController {
 
         }
     }
-
-    /**
-     * Update a User's profile information.
-     *
-     * @param aboutMeObject New user information
-     */
-    @PutMapping("/profile/{identifier}")
-    public void updateAboutMe(@PathVariable String identifier, @RequestBody ObjectNode aboutMeObject) {
-
-        String aboutMeText = aboutMeObject.get("aboutMe").asText();
-
-        User userToUpdate = new User();
-        // Get the user to update by their ID or username
-        try {
-            Integer id = Integer.parseInt(identifier);
-            userToUpdate = userService.findUserById(id);
-        } catch (NumberFormatException e) {
-            userToUpdate = userService.findUserByUsername(identifier);
-        }
-
-        userService.updateAboutMe(userToUpdate, aboutMeText);
-    }
 }
