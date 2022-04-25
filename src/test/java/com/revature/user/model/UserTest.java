@@ -9,7 +9,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 public class UserTest
 {
     /**
-     * @Author Tyler, Boualem, Jason
+     * @author Tyler, Boualem, Jason
      * Makes sure the test class works
      */
     @Test
@@ -19,7 +19,7 @@ public class UserTest
     }
 
     /**
-     * @Author Tyler, Boualem, Jason
+     * @author Tyler, Boualem, Jason
      * Makes sure you can create new user objects
      */
     @Test
@@ -33,7 +33,7 @@ public class UserTest
 
 
     /**
-     * @Author Tyler, Boualem, Jason
+     * @author Tyler, Boualem, Jason
      * Make sure that registration fields are working
      */
 

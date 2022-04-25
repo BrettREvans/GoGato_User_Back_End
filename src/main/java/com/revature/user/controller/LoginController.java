@@ -33,7 +33,7 @@ public class LoginController {
 
             if (dbUser != null) // Check if User exists
             {
-                if (userService.comparePassword(user, dbUser))  // Check password
+                if (userService.comparePassword(user.getPassword(), dbUser.getPassword()))  // Check password
                 {
                     user = dbUser;  // User credentials match
                 }

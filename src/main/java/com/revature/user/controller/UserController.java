@@ -19,7 +19,7 @@ public class UserController {
 
     /**
      * Creates the user through an HTTP request
-     * @Author Tyler, Boualem, Jason
+     * @author Tyler, Boualem, Jason
      * @param user
      * @return a user profile
      */
@@ -29,7 +29,7 @@ public class UserController {
     }
     /**
      * Retrieves a list of all users
-     * @Author Tyler, Boualem, Jason
+     * @author Tyler, Boualem, Jason
      * @return a list of users
      */
     @GetMapping
@@ -43,7 +43,7 @@ public class UserController {
 
     /**
      * Get user by ID or Username. If ID cannot be parsed as an integer, assume string and find by username.
-     *
+     *@author Tyler, Boualem, Jason, Marcus
      * @param identifier
      * @return
      */
