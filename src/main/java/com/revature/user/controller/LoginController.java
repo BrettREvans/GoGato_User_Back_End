@@ -27,7 +27,8 @@ public class LoginController {
      * @return The User after validation
      */
     @PostMapping
-    public User checkLogin(@RequestBody User user) {
+    public String checkLogin(@RequestBody User user) {
+        User emptyUser = new User();
         if (user != null) {
             User dbUser = userService.findByUsername(user.getUsername());
 
@@ -35,12 +36,12 @@ public class LoginController {
             {
                 if (userService.comparePassword(user.getPassword(), dbUser.getPassword()))  // Check password
                 {
-                    user = dbUser;  // User credentials match
+                    return dbUser.getUsername();  // User credentials match
                 }
             }
         }
 
-        return user;    // Returns the User, has no ID if User had wrong password or doesn't exist
+        return emptyUser.getUsername();    // Returns the User, has no ID if User had wrong password or doesn't exist
     }
 
 }
