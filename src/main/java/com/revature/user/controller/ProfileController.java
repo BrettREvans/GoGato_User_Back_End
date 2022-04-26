@@ -39,4 +39,9 @@ public class ProfileController {
 
         profileService.updateAboutMe(userToUpdate, aboutMeText);
     }
+
+    @GetMapping
+    public String helloWorld() {
+        return "Hello, world!";
+    }
 }
