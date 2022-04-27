@@ -61,7 +61,7 @@ public class ProfileController {
         }
 
         if (lastName == "") {
-            firstName = userToUpdate.getLastName();
+            lastName = userToUpdate.getLastName();
         }
 
         profileService.updateName(userToUpdate, firstName, lastName);
