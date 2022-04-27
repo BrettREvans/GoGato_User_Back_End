@@ -23,7 +23,7 @@ public class ProfileController {
      * @param aboutMeObject New user information
      * @author Asheton, Jazib
      */
-    @PutMapping("/{identifier}")
+    @PutMapping("/{identifier}/about")
     public void updateAboutMe(@PathVariable String identifier, @RequestBody ObjectNode aboutMeObject) {
 
         String aboutMeText = aboutMeObject.get("aboutMe").asText();
@@ -42,15 +42,10 @@ public class ProfileController {
     /**
      * Update a User's first name and last name in profile.
      *
-     * @param firstNameObject Updated first name
-     * @param lastNameObject Updated last name
      * @author Asheton, Jazib
      */
-    @PutMapping("/{identifier}")
-    public void updateName(@PathVariable String identifier, @RequestBody ObjectNode firstNameObject, @RequestBody ObjectNode lastNameObject ) {
-
-        String firstName = firstNameObject.get("firstName").asText();
-        String lastName = lastNameObject.get("lastName").asText();
+    @PutMapping("/{identifier}/name")
+    public void updateName(@PathVariable String identifier, @RequestParam String firstName, @RequestParam String lastName) {
 
         User userToUpdate = new User();
         // Get the user to update by their ID or username
@@ -59,6 +54,14 @@ public class ProfileController {
             userToUpdate = userService.findUserById(id);
         } catch (NumberFormatException e) {
             userToUpdate = userService.findByUsername(identifier);
+        }
+
+        if (firstName == "") {
+            firstName = userToUpdate.getFirstName();
+        }
+
+        if (lastName == "") {
+            firstName = userToUpdate.getLastName();
         }
 
         profileService.updateName(userToUpdate, firstName, lastName);
