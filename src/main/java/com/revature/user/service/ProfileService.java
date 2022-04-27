@@ -23,4 +23,19 @@ public class ProfileService {
         user.setAboutMe(aboutMeText);
         return userRepository.save(user);
     }
+
+    /**
+     * Sets a User's first and last name to a new value.
+     *
+     * @param user The User to update
+     * @param firstName The new first name
+     * @param lastName The new last name
+     * @return The saved user object
+     * @author Asheton, Jazib
+     */
+    public User updateName(User user, String firstName, String lastName){
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        return userRepository.save(user);
+    }
 }

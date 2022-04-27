@@ -39,4 +39,24 @@ public class ProfileController {
 
         profileService.updateAboutMe(userToUpdate, aboutMeText);
     }
+
+    @PutMapping("/{identifier}")
+    public void updateName(@PathVariable String identifier, @RequestBody ObjectNode firstNameObject, @RequestBody ObjectNode lastNameObject ) {
+
+        String firstName = firstNameObject.get("firstName").asText();
+        String lastName = lastNameObject.get("lastName").asText();
+
+        User userToUpdate = new User();
+        // Get the user to update by their ID or username
+        try {
+            Integer id = Integer.parseInt(identifier);
+            userToUpdate = userService.findUserById(id);
+        } catch (NumberFormatException e) {
+            userToUpdate = userService.findByUsername(identifier);
+        }
+
+        profileService.updateName(userToUpdate, firstName, lastName);
+    }
+
+
 }
