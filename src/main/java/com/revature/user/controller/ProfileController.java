@@ -39,7 +39,13 @@ public class ProfileController {
 
         profileService.updateAboutMe(userToUpdate, aboutMeText);
     }
-
+    /**
+     * Update a User's first name and last name in profile.
+     *
+     * @param firstNameObject Updated first name
+     * @param lastNameObject Updated last name
+     * @author Asheton, Jazib
+     */
     @PutMapping("/{identifier}")
     public void updateName(@PathVariable String identifier, @RequestBody ObjectNode firstNameObject, @RequestBody ObjectNode lastNameObject ) {
 
