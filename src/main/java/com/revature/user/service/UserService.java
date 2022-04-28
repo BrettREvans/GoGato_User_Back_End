@@ -119,4 +119,11 @@ public class UserService {
         // Returns true/false if password matches
         return encPass.equals(dbUserPass);
     }
+
+    public User updatePoints(User user, int points)
+    {
+        user.setPoints(user.getPoints() + points);
+        return userRepository.save(user);
+    }
+
 }
