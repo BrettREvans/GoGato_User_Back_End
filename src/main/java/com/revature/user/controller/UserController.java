@@ -59,4 +59,52 @@ public class UserController {
 
         }
     }
+
+    /**
+     * Updates a User's point amount
+     *
+     * @param pointsObj New user information
+     * @author Christian, Asheton
+     */
+    @PutMapping("/{identifier}/points")
+    public void updatePoints(@PathVariable String identifier, @RequestBody ObjectNode pointsObj) {
+
+        int userId = pointsObj.get("id").asInt();
+        int points = pointsObj.get("points").asInt();
+
+        User userToUpdate = new User();
+        // Get the user to update by their ID or username
+        try {
+            Integer id = Integer.parseInt(identifier);
+            userToUpdate = userService.findUserById(id);
+        } catch (NumberFormatException e) {
+            userToUpdate = userService.findByUsername(identifier);
+        }
+
+        userService.updatePoints(userToUpdate, points);
+    }
+
+    /**
+     * Updates a User's post amount
+     *
+     * @param postsObj New user information
+     * @author Christian
+     */
+    @PutMapping("/{identifier}/posts")
+    public void updatePosts(@PathVariable String identifier, @RequestBody ObjectNode postsObj) {
+
+        int userId = postsObj.get("id").asInt();
+        int posts = postsObj.get("posts").asInt();
+
+        User userToUpdate = new User();
+        // Get the user to update by their ID or username
+        try {
+            Integer id = Integer.parseInt(identifier);
+            userToUpdate = userService.findUserById(id);
+        } catch (NumberFormatException e) {
+            userToUpdate = userService.findByUsername(identifier);
+        }
+
+        userService.updatePosts(userToUpdate, posts);
+    }
 }

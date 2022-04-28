@@ -119,4 +119,32 @@ public class UserService {
         // Returns true/false if password matches
         return encPass.equals(dbUserPass);
     }
+
+    /**
+     * Updates number of points a user has
+     *
+     * @param user User passed
+     * @param points points being added/removed
+     * @return user for update
+     * @author Asheton, Christian
+     */
+    public User updatePoints(User user, int points)
+    {
+        user.setPoints(user.getPoints() + points);
+        return userRepository.save(user);
+    }
+
+    /**
+     * Updates number of posts a user has
+     *
+     * @param user User passed
+     * @param posts points being added/removed
+     * @return user for update
+     * @author Christian
+     */
+    public User updatePosts(User user, int posts)
+    {
+        user.setPosts(user.getPosts() + posts);
+        return userRepository.save(user);
+    }
 }
