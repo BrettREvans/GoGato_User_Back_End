@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.revature.user.model.User;
 import com.revature.user.service.ProfileService;
 import com.revature.user.service.UserService;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,11 +22,12 @@ public class ProfileController {
     UserService userService;
 
     /**
-     * Update a User's profile information.
+     * Update a User's About Me.
      *
      * @param aboutMeObject New user information
      * @author Asheton, Jazib
      */
+    @Parameter(description = "Update a User's about me")
     @PutMapping("/{identifier}/about")
     public void updateAboutMe(@PathVariable String identifier, @RequestBody ObjectNode aboutMeObject) {
 
@@ -48,6 +50,8 @@ public class ProfileController {
      *
      * @author Asheton, Jazib
      */
+
+    @Parameter(description = "Update a User's Name")
     @PutMapping("/{identifier}/name")
     public void updateName(@PathVariable String identifier, @RequestParam String firstName, @RequestParam String lastName) {
 

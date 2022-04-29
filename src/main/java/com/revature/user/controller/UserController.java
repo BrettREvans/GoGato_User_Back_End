@@ -33,6 +33,8 @@ public class UserController {
      * @return a user profile
      * @author Tyler, Boualem, Jason
      */
+
+    @Parameter(description = "Create a new User")
     @PostMapping
     public User createNewUser(@RequestBody User user) {
         return userService.createNewUser(user);
@@ -45,7 +47,10 @@ public class UserController {
      * @author Tyler, Boualem, Jason
      */
 
+
+
     @GetMapping
+    @Parameter(description = "Get all Users")
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }
@@ -62,7 +67,7 @@ public class UserController {
      * @author Tyler, Boualem, Jason, Marcus
      */
 
-    @Operation(summary = "Get a user by its id")
+    @Operation(summary = "Get a user by Id or Username")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Found the user",
             content = {@Content(mediaType = "application/json",
@@ -73,7 +78,7 @@ public class UserController {
                 content = @Content) })
 
     @GetMapping("/{identifier}")
-    public User findUserByIdOrUsername(@Parameter(description = "id of user to be searched")
+    public User findUserByIdOrUsername(@Parameter(description = "Identifier of User to be searched")
                                        @PathVariable String identifier) {
         try {
             Integer id = Integer.parseInt(identifier);
@@ -92,7 +97,7 @@ public class UserController {
      * @author Christian, Asheton
      */
     @PutMapping("/{identifier}/points")
-    public void updatePoints(@PathVariable String identifier, @RequestBody ObjectNode pointsObj) {
+    public void updatePoints(@Parameter(description = "Update User's amount of points")@PathVariable String identifier, @RequestBody ObjectNode pointsObj) {
 
         int userId = pointsObj.get("id").asInt();
         int points = pointsObj.get("points").asInt();
@@ -116,7 +121,7 @@ public class UserController {
      * @author Christian
      */
     @PutMapping("/{identifier}/posts")
-    public void updatePosts(@PathVariable String identifier, @RequestBody ObjectNode postsObj) {
+    public void updatePosts(@Parameter(description = "Update User's amount of Posts")@PathVariable String identifier, @RequestBody ObjectNode postsObj) {
 
         int userId = postsObj.get("id").asInt();
         int posts = postsObj.get("posts").asInt();
