@@ -7,6 +7,9 @@ import com.revature.user.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * This controller handles requests to modify information that may appear on a user's profile page.
+ */
 @RestController
 @RequestMapping("/profiles")
 public class ProfileController {

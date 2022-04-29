@@ -4,6 +4,9 @@ import com.revature.user.model.User;
 import com.revature.user.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * This controller handles requests to log into the application.
+ */
 @RestController
 @CrossOrigin
 @RequestMapping("/login")

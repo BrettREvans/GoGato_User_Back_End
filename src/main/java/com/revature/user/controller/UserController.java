@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * This controller handles requests to create, retrieve, and update the stats of a User.
+ */
 @RestController
 @RequestMapping("/users")
 public class UserController {
