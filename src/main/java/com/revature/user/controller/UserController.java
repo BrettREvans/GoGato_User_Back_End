@@ -69,7 +69,7 @@ public class UserController {
                 schema = @Schema(implementation = User.class)) }),
             @ApiResponse(responseCode = "400", description = "Invalid id supplied",
                 content = @Content),
-            @ApiResponse(responseCode = "404", description = "Book not found",
+            @ApiResponse(responseCode = "404", description = "User not found",
                 content = @Content) })
 
     @GetMapping("/{identifier}")
