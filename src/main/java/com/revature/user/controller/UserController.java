@@ -4,6 +4,12 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.revature.user.model.User;
 import com.revature.user.repository.UserRepository;
 import com.revature.user.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -38,6 +44,7 @@ public class UserController {
      * @return a list of users
      * @author Tyler, Boualem, Jason
      */
+
     @GetMapping
     public List<User> getAllUsers() {
         return userService.getAllUsers();
@@ -54,8 +61,20 @@ public class UserController {
      * @return
      * @author Tyler, Boualem, Jason, Marcus
      */
+
+    @Operation(summary = "Get a user by its id")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Found the user",
+            content = {@Content(mediaType = "application/json",
+                schema = @Schema(implementation = User.class)) }),
+            @ApiResponse(responseCode = "400", description = "Invalid id supplied",
+                content = @Content),
+            @ApiResponse(responseCode = "404", description = "Book not found",
+                content = @Content) })
+
     @GetMapping("/{identifier}")
-    public User findUserByIdOrUsername(@PathVariable String identifier) {
+    public User findUserByIdOrUsername(@Parameter(description = "id of user to be searched")
+                                       @PathVariable String identifier) {
         try {
             Integer id = Integer.parseInt(identifier);
             return userService.findUserById(id);
