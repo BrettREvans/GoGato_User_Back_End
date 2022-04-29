@@ -5,6 +5,12 @@ import com.revature.user.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ *
+ * This class contains the methods to update a User's personal information such
+ * as the name on the account and the About Me.
+ *
+ */
 @Service
 public class ProfileService {
 

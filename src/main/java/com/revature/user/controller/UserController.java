@@ -48,7 +48,7 @@ public class UserController {
     }
 
     /**
-     * Get user by ID or Username. If ID cannot be parsed as an integer, assume string and find by username.
+     * Allows a way to retrieve a user by ID or Username. If the ID cannot be parsed as an integer, will be able to assume string and find by username.
      *
      * @param identifier
      * @return
@@ -67,7 +67,7 @@ public class UserController {
     }
 
     /**
-     * Updates a User's point amount
+     * Updates the number of User's points
      *
      * @param pointsObj New user information
      * @author Christian, Asheton
@@ -91,7 +91,7 @@ public class UserController {
     }
 
     /**
-     * Updates a User's post amount
+     * Updates the number of User's posts
      *
      * @param postsObj New user information
      * @author Christian

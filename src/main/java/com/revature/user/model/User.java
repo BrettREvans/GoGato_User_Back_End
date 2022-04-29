@@ -7,6 +7,11 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+
+/**
+ * This class stores the User account model
+ */
+
 @Entity(name = "users")
 @Getter
 @Setter

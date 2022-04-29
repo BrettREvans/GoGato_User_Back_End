@@ -8,21 +8,29 @@ import org.springframework.stereotype.Service;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+
+/**
+ * This class contains the methods to create and retrieve Users,
+ * encrypt passwords, validate credentials against database,
+ * and update the number of points as well as posts that a User has.
+ *
+ */
 @Service
 public class UserService {
 
     /**
-     * Dependencies needed
+     * These are the dependencies that will be injected into the UserController
      */
     private final UserRepository userRepository;
     private final BCrypt.Hasher hasher;
     private final String SALT = ".512HxpO$qvUt!7y";
 
     /**
-     * Constructor -> Dependencies are injected via IoC container
+     * Constructor that allows the dependencies to be injected via IoC container
      *
      * @param userRepository UserRepository bean
      * @param hasher         Password encryptor bean
+     * @author Tyler, Boualem, Jason, Marcus
      */
     public UserService(UserRepository userRepository, BCrypt.Hasher hasher) {
         this.userRepository = userRepository;
@@ -86,7 +94,7 @@ public class UserService {
     }
 
     /**
-     * Encrypts a password
+     * Encrypts the password of users
      *
      * @param password Password to encrypt
      * @return The encrypted password

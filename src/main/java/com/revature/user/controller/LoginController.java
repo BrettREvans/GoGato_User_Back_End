@@ -15,7 +15,7 @@ public class LoginController {
     private final UserService userService;
 
     /**
-     * Constructor -> Injects needed dependencies
+     * This constructor will inject the dependencies needed from the service layer.
      *
      * @param userService UserService dependency
      * @author Tyler, Boualem, Jason
@@ -25,7 +25,7 @@ public class LoginController {
     }
 
     /**
-     * Method -> Checks a User that is logging in
+     * Will check the current user logging in and compare with database credentials.
      *
      * @param user The info to be checked
      * @return The User after validation
