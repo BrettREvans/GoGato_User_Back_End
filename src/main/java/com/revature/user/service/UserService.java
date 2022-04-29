@@ -20,8 +20,9 @@ public class UserService {
 
     /**
      * Constructor -> Dependencies are injected via IoC container
+     *
      * @param userRepository UserRepository bean
-     * @param hasher Password encryptor bean
+     * @param hasher         Password encryptor bean
      */
     public UserService(UserRepository userRepository, BCrypt.Hasher hasher) {
         this.userRepository = userRepository;
@@ -37,8 +38,7 @@ public class UserService {
      */
     public User createNewUser(User user) {
 
-        try
-        {
+        try {
             // Encrypt the password
             String encPass = encryptPassword(user.getPassword());
 
@@ -47,9 +47,7 @@ public class UserService {
 
             // Persist and returns a user profile
             return userRepository.save(user);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             throw new RuntimeException("Could not encrypt password!");
         }
     }
@@ -74,8 +72,6 @@ public class UserService {
     public User findUserById(Integer id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found!"));
     }
-
-
 
 
     /**
@@ -106,7 +102,7 @@ public class UserService {
     /**
      * Compares submitted password with database password
      *
-     * @param userPass Password of user being checked
+     * @param userPass   Password of user being checked
      * @param dbUserPass Password of user from the database to check/validate against
      * @return True/false whether password match
      * @author Tyler, Boualem, Jason, Marcus
@@ -123,13 +119,12 @@ public class UserService {
     /**
      * Updates number of points a user has
      *
-     * @param user User passed
+     * @param user   User passed
      * @param points points being added/removed
      * @return user for update
      * @author Asheton, Christian
      */
-    public User updatePoints(User user, int points)
-    {
+    public User updatePoints(User user, int points) {
         user.setPoints(user.getPoints() + points);
         return userRepository.save(user);
     }
@@ -137,13 +132,12 @@ public class UserService {
     /**
      * Updates number of posts a user has
      *
-     * @param user User passed
+     * @param user  User passed
      * @param posts points being added/removed
      * @return user for update
      * @author Christian
      */
-    public User updatePosts(User user, int posts)
-    {
+    public User updatePosts(User user, int posts) {
         user.setPosts(user.getPosts() + posts);
         return userRepository.save(user);
     }

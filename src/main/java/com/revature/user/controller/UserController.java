@@ -19,22 +19,25 @@ public class UserController {
 
     /**
      * Creates the user through an HTTP request
-     * @author Tyler, Boualem, Jason
+     *
      * @param user
      * @return a user profile
+     * @author Tyler, Boualem, Jason
      */
     @PostMapping
     public User createNewUser(@RequestBody User user) {
-        return userService.createNewUser(user); // returns user profile
+        return userService.createNewUser(user);
     }
+
     /**
      * Retrieves a list of all users
-     * @author Tyler, Boualem, Jason
+     *
      * @return a list of users
+     * @author Tyler, Boualem, Jason
      */
     @GetMapping
-    public List<User> getAllUsers(){
-        return userService.getAllUsers(); // returns a list of users
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
     }
 
     public UserController(UserService userService) {
@@ -43,9 +46,10 @@ public class UserController {
 
     /**
      * Get user by ID or Username. If ID cannot be parsed as an integer, assume string and find by username.
-     *@author Tyler, Boualem, Jason, Marcus
+     *
      * @param identifier
      * @return
+     * @author Tyler, Boualem, Jason, Marcus
      */
     @GetMapping("/{identifier}")
     public User findUserByIdOrUsername(@PathVariable String identifier) {
@@ -53,8 +57,7 @@ public class UserController {
             Integer id = Integer.parseInt(identifier);
             return userService.findUserById(id);
         } catch (NumberFormatException e) {
-
-            // we know that the identifier string is not a number, so we can use it as a username
+            // Assume identifier is a string username
             return userService.findByUsername(identifier);
 
         }

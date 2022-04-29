@@ -39,6 +39,7 @@ public class ProfileController {
 
         profileService.updateAboutMe(userToUpdate, aboutMeText);
     }
+
     /**
      * Update a User's first name and last name in profile.
      *
