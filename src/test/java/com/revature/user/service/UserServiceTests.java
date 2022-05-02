@@ -160,7 +160,7 @@ public class UserServiceTests {
     {
         // Create a User object
         User userTest = new User();
-        userTest.setUsername("Test");
+        userTest.setUsername("Test1");
         userTest.setPassword("Test");
         userTest.setFirstName("Test");
         userTest.setLastName("Test");
@@ -188,7 +188,7 @@ public class UserServiceTests {
     {
         // Create a User object
         User userTest = new User();
-        userTest.setUsername("Test");
+        userTest.setUsername("Test2");
         userTest.setPassword("Test");
         userTest.setFirstName("Test");
         userTest.setLastName("Test");
