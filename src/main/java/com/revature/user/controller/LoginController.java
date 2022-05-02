@@ -2,6 +2,7 @@ package com.revature.user.controller;
 
 import com.revature.user.model.User;
 import com.revature.user.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.web.bind.annotation.*;
 
@@ -32,6 +33,8 @@ public class LoginController {
      * @return The User after validation
      * @author Tyler, Boualem, Jason
      */
+
+    @Operation(summary = "Login using existing User credentials")
     @Parameter(description = "Login using existing User credentials")
     @PostMapping
     public Integer checkLogin(@RequestBody User user) {

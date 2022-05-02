@@ -34,6 +34,7 @@ public class UserController {
      * @author Tyler, Boualem, Jason
      */
 
+    @Operation(summary = "Create a new User")
     @Parameter(description = "Create a new User")
     @PostMapping
     public User createNewUser(@RequestBody User user) {
@@ -48,7 +49,7 @@ public class UserController {
      */
 
 
-
+    @Operation(summary = "Get all Users")
     @GetMapping
     @Parameter(description = "Get all Users")
     public List<User> getAllUsers() {
@@ -96,6 +97,8 @@ public class UserController {
      * @param pointsObj New user information
      * @author Christian, Asheton
      */
+
+    @Operation(summary = "Update User's amount of points")
     @PutMapping("/{identifier}/points")
     public void updatePoints(@Parameter(description = "Update User's amount of points")@PathVariable String identifier, @RequestBody ObjectNode pointsObj) {
 
@@ -120,6 +123,8 @@ public class UserController {
      * @param postsObj New user information
      * @author Christian
      */
+
+    @Operation(summary = "Update a User's amount of posts")
     @PutMapping("/{identifier}/posts")
     public void updatePosts(@Parameter(description = "Update User's amount of Posts")@PathVariable String identifier, @RequestBody ObjectNode postsObj) {
 
