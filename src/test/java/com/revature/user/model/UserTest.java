@@ -5,12 +5,18 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.springframework.boot.test.context.SpringBootTest;
 
+
+/**
+ * This class contains tests to ensure that the User model class is working.
+ *
+ */
 @SpringBootTest
 public class UserTest
 {
     /**
+     * Makes sure the test class is working.
+     *
      * @author Tyler, Boualem, Jason
-     * Makes sure the test class works
      */
     @Test
     public void TestClassWorks()
@@ -19,8 +25,9 @@ public class UserTest
     }
 
     /**
+     * Makes sure that a new User object is being created.
+     *
      * @author Tyler, Boualem, Jason
-     * Makes sure you can create new user objects
      */
     @Test
     @DisplayName("Test for the creation of a new User")
@@ -33,8 +40,9 @@ public class UserTest
 
 
     /**
+     * Tests to validate that registration fields are working.
+     *
      * @author Tyler, Boualem, Jason
-     * Make sure that registration fields are working
      */
 
     @Test

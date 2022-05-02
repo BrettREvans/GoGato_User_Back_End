@@ -8,20 +8,29 @@ import org.springframework.stereotype.Service;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 
+
+/**
+ * This class contains the methods to create and retrieve Users,
+ * encrypt passwords, validate credentials against database,
+ * and update the number of points as well as posts that a User has.
+ *
+ */
 @Service
 public class UserService {
 
     /**
-     * Dependencies needed
+     * These are the dependencies that will be injected into the UserController
      */
     private final UserRepository userRepository;
     private final BCrypt.Hasher hasher;
     private final String SALT = ".512HxpO$qvUt!7y";
 
     /**
-     * Constructor -> Dependencies are injected via IoC container
+     * Constructor that allows the dependencies to be injected via IoC container
+     *
      * @param userRepository UserRepository bean
-     * @param hasher Password encryptor bean
+     * @param hasher         Password encryptor bean
+     * @author Tyler, Boualem, Jason, Marcus
      */
     public UserService(UserRepository userRepository, BCrypt.Hasher hasher) {
         this.userRepository = userRepository;
@@ -37,8 +46,7 @@ public class UserService {
      */
     public User createNewUser(User user) {
 
-        try
-        {
+        try {
             // Encrypt the password
             String encPass = encryptPassword(user.getPassword());
 
@@ -47,9 +55,7 @@ public class UserService {
 
             // Persist and returns a user profile
             return userRepository.save(user);
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             throw new RuntimeException("Could not encrypt password!");
         }
     }
@@ -76,8 +82,6 @@ public class UserService {
     }
 
 
-
-
     /**
      * Finds the User by username in the database
      *
@@ -90,7 +94,7 @@ public class UserService {
     }
 
     /**
-     * Encrypts a password
+     * Encrypts the password of users
      *
      * @param password Password to encrypt
      * @return The encrypted password
@@ -106,7 +110,7 @@ public class UserService {
     /**
      * Compares submitted password with database password
      *
-     * @param userPass Password of user being checked
+     * @param userPass   Password of user being checked
      * @param dbUserPass Password of user from the database to check/validate against
      * @return True/false whether password match
      * @author Tyler, Boualem, Jason, Marcus
@@ -123,13 +127,12 @@ public class UserService {
     /**
      * Updates number of points a user has
      *
-     * @param user User passed
+     * @param user   User passed
      * @param points points being added/removed
      * @return user for update
      * @author Asheton, Christian
      */
-    public User updatePoints(User user, int points)
-    {
+    public User updatePoints(User user, int points) {
         user.setPoints(user.getPoints() + points);
         return userRepository.save(user);
     }
@@ -137,13 +140,12 @@ public class UserService {
     /**
      * Updates number of posts a user has
      *
-     * @param user User passed
+     * @param user  User passed
      * @param posts points being added/removed
      * @return user for update
      * @author Christian
      */
-    public User updatePosts(User user, int posts)
-    {
+    public User updatePosts(User user, int posts) {
         user.setPosts(user.getPosts() + posts);
         return userRepository.save(user);
     }
