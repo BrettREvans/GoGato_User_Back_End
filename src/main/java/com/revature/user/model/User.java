@@ -29,7 +29,6 @@ public class User {
     private String password;
     private int followerCount;
     private int points;
-    private int posts;
     private String firstName;
     private String lastName;
     private String email;
