@@ -116,30 +116,4 @@ public class UserController {
 
         userService.updatePoints(userToUpdate, points);
     }
-
-    /**
-     * Updates the number of User's posts
-     *
-     * @param postsObj New user information
-     * @author Christian
-     */
-
-    @Operation(summary = "Update a User's amount of posts")
-    @PutMapping("/{identifier}/posts")
-    public void updatePosts(@Parameter(description = "Update User's amount of Posts")@PathVariable String identifier, @RequestBody ObjectNode postsObj) {
-
-
-        int posts = postsObj.get("posts").asInt();
-
-        User userToUpdate = new User();
-        // Get the user to update by their ID or username
-        try {
-            Integer id = Integer.parseInt(identifier);
-            userToUpdate = userService.findUserById(id);
-        } catch (NumberFormatException e) {
-            userToUpdate = userService.findByUsername(identifier);
-        }
-
-        userService.updatePosts(userToUpdate, posts);
-    }
 }
