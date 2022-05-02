@@ -69,7 +69,6 @@ public class UserController {
     @PutMapping("/{identifier}/points")
     public void updatePoints(@PathVariable String identifier, @RequestBody ObjectNode pointsObj) {
 
-        int userId = pointsObj.get("id").asInt();
         int points = pointsObj.get("points").asInt();
 
         User userToUpdate = new User();
@@ -93,7 +92,6 @@ public class UserController {
     @PutMapping("/{identifier}/posts")
     public void updatePosts(@PathVariable String identifier, @RequestBody ObjectNode postsObj) {
 
-        int userId = postsObj.get("id").asInt();
         int posts = postsObj.get("posts").asInt();
 
         User userToUpdate = new User();
